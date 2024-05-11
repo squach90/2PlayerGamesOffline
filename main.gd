@@ -38,14 +38,14 @@ extends Node2D
 var crossicon = preload("res://Images/croix.png")
 var circleicon = preload("res://Images/cercle.png")
 
-
 func _ready():
 	newGameMorpion()
-	
+	var listOfBtnMoprion = [BtnMorpion1, BtnMorpion2, BtnMorpion3, BtnMorpion4, BtnMorpion5, BtnMorpion6, BtnMorpion7, BtnMorpion8, BtnMorpion9]
 
 
 func _process(delta):
 	viewIfWin()
+	nullMatch()
 
 
 func _on_select_game_btn_pressed():
@@ -73,6 +73,16 @@ func _on_option_btn_pressed():
 #-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 var morpionplayer = 1
+var Btn1icon = false
+var Btn2icon = false
+var Btn3icon = false
+var Btn4icon = false
+var Btn5icon = false
+var Btn6icon = false
+var Btn7icon = false
+var Btn8icon = false
+var Btn9icon = false
+
 
 func _on_btn_1_pressed():
 	if morpionplayer == 1:
@@ -80,11 +90,15 @@ func _on_btn_1_pressed():
 		BtnMorpion1.text = ""
 		print(morpionplayer)
 		morpionplayer = 2
+		BtnMorpion1.disabled = true
+		Btn1icon = true
 	elif morpionplayer == 2:
 		BtnMorpion1.icon = circleicon
 		BtnMorpion1.text = ""
 		print(morpionplayer)
 		morpionplayer = 1
+		BtnMorpion1.disabled = true
+		Btn1icon = true
 
 
 func _on_btn_2_pressed():
@@ -93,11 +107,15 @@ func _on_btn_2_pressed():
 		BtnMorpion2.text = ""
 		print(morpionplayer)
 		morpionplayer = 2
+		BtnMorpion2.disabled = true
+		Btn2icon = true
 	elif morpionplayer == 2:
 		BtnMorpion2.icon = circleicon
 		BtnMorpion2.text = ""
 		print(morpionplayer)
 		morpionplayer = 1
+		BtnMorpion2.disabled = true
+		Btn2icon = true
 
 
 func _on_btn_3_pressed():
@@ -106,11 +124,15 @@ func _on_btn_3_pressed():
 		BtnMorpion3.text = ""
 		print(morpionplayer)
 		morpionplayer = 2
+		BtnMorpion3.disabled = true
+		Btn3icon = true
 	elif morpionplayer == 2:
 		BtnMorpion3.icon = circleicon
 		BtnMorpion3.text = ""
 		print(morpionplayer)
 		morpionplayer = 1
+		BtnMorpion3.disabled = true
+		Btn3icon = true
 
 
 func _on_btn_4_pressed():
@@ -119,11 +141,15 @@ func _on_btn_4_pressed():
 		BtnMorpion4.text = ""
 		print(morpionplayer)
 		morpionplayer = 2
+		BtnMorpion4.disabled = true
+		Btn4icon = true
 	elif morpionplayer == 2:
 		BtnMorpion4.icon = circleicon
 		BtnMorpion4.text = ""
 		print(morpionplayer)
 		morpionplayer = 1
+		BtnMorpion4.disabled = true
+		Btn4icon = true
 
 
 func _on_btn_5_pressed():
@@ -132,11 +158,15 @@ func _on_btn_5_pressed():
 		BtnMorpion5.text = ""
 		print(morpionplayer)
 		morpionplayer = 2
+		BtnMorpion5.disabled = true
+		Btn5icon = true
 	elif morpionplayer == 2:
 		BtnMorpion5.icon = circleicon
 		BtnMorpion5.text = ""
 		print(morpionplayer)
-		morpionplayer = 1.
+		morpionplayer = 1
+		BtnMorpion5.disabled = true
+		Btn5icon = true
 
 
 func _on_btn_6_pressed():
@@ -145,12 +175,15 @@ func _on_btn_6_pressed():
 		BtnMorpion6.text = ""
 		print(morpionplayer)
 		morpionplayer = 2
+		BtnMorpion6.disabled = true
+		Btn6icon = true
 	elif morpionplayer == 2:
 		BtnMorpion6.icon = circleicon
 		BtnMorpion6.text = ""
 		print(morpionplayer)
 		morpionplayer = 1
-
+		BtnMorpion6.disabled = true
+		Btn6icon = true
 
 func _on_btn_7_pressed():
 	if morpionplayer == 1:
@@ -158,11 +191,15 @@ func _on_btn_7_pressed():
 		BtnMorpion7.text = ""
 		print(morpionplayer)
 		morpionplayer = 2
+		BtnMorpion7.disabled = true
+		Btn7icon = true
 	elif morpionplayer == 2:
 		BtnMorpion7.icon = circleicon
 		BtnMorpion7.text = ""
 		print(morpionplayer)
 		morpionplayer = 1
+		BtnMorpion7.disabled = true
+		Btn7icon = true
 
 
 func _on_btn_8_pressed():
@@ -171,11 +208,15 @@ func _on_btn_8_pressed():
 		BtnMorpion8.text = ""
 		print(morpionplayer)
 		morpionplayer = 2
+		BtnMorpion8.disabled = true
+		Btn8icon = true
 	elif morpionplayer == 2:
 		BtnMorpion8.icon = circleicon
 		BtnMorpion8.text = ""
 		print(morpionplayer)
 		morpionplayer = 1
+		BtnMorpion8.disabled = true
+		Btn8icon = true
 
 
 func _on_btn_9_pressed():
@@ -184,11 +225,15 @@ func _on_btn_9_pressed():
 		BtnMorpion9.text = ""
 		print(morpionplayer)
 		morpionplayer = 2
+		BtnMorpion9.disabled = true
+		Btn9icon = true
 	elif morpionplayer == 2:
 		BtnMorpion9.icon = circleicon
 		BtnMorpion9.text = ""
 		print(morpionplayer)
 		morpionplayer = 1
+		BtnMorpion9.disabled = true
+		Btn9icon = true
 
 
 func _on_retry_btn_morpion_pressed():
@@ -315,6 +360,16 @@ func newGameMorpion():
 	BtnMorpion8.disabled = false
 	BtnMorpion9.disabled = false
 	
+	Btn1icon = false
+	Btn2icon = false
+	Btn3icon = false
+	Btn4icon = false
+	Btn5icon = false
+	Btn6icon = false
+	Btn7icon = false
+	Btn8icon = false
+	Btn9icon = false
+	
 	RetryBtnMorpion.visible = false
 	
 #------------ CLEAR GAME FUNCTION ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -367,5 +422,8 @@ func _on_morpion_pressed():
 	MenuScreen.visible = !MenuScreen.visible
 	MorpionScreen.visible = !MorpionScreen.visible
 
-
-
+#--------------IF MATCH IS NULL-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+func nullMatch():
+	var listOfBtnIconMoprion = [Btn1icon, Btn2icon, Btn3icon, Btn4icon, Btn5icon, Btn6icon, Btn7icon, Btn8icon, Btn9icon]
+	if Btn1icon == true and Btn2icon == true and Btn3icon == true and Btn4icon == true and Btn5icon == true and Btn6icon == true and Btn7icon == true and Btn8icon == true and Btn9icon == true and RedWinText.visible == false and BlueWinText.visible == false:
+		RetryBtnMorpion.visible = true
