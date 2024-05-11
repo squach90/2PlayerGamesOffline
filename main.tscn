@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://d0bgk8cx2mpww"]
+[gd_scene load_steps=30 format=3 uid="uid://d0bgk8cx2mpww"]
 
 [ext_resource type="Texture2D" uid="uid://c8gwujf37pnp6" path="res://Images/Background/BackgroundTitleScreen.jpg" id="1_cho8v"]
 [ext_resource type="Script" path="res://main.gd" id="1_hfvr8"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bud7orfqpxx1c" path="res://Images/retour.png" id="6_36wxc"]
 [ext_resource type="FontFile" uid="uid://dpd2jqvbng65h" path="res://Fonts/BlockHead_bold.ttf" id="7_eas32"]
 [ext_resource type="Texture2D" uid="uid://c6pmfhkiqvjrc" path="res://Images/retry.png" id="8_rqst5"]
+[ext_resource type="Texture2D" uid="uid://ccinstgdtef6v" path="res://Images/DiceGame/Dice5.png" id="9_5fgof"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iee08"]
 
@@ -29,6 +30,10 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yqadh"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o7vhl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ka6kh"]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h6mf0"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vtdmk"]
@@ -39,6 +44,14 @@
 max_value = 100.0
 _data = [Vector2(0.0152542, 4.66904), 0.0, 0.0, 0, 0, Vector2(0.967797, 5.20461), 0.0, 0.0, 0, 0]
 point_count = 2
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xahwp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jjr3q"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ak32e"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0ybvg"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_hfvr8")
@@ -227,6 +240,21 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_yqadh")
 text = " Retour"
 icon = ExtResource("6_36wxc")
 flat = true
+expand_icon = true
+
+[node name="DiceGame" type="Button" parent="CanvasLayer/MenuScreen"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -140.0
+offset_top = 208.0
+offset_right = 149.0
+offset_bottom = 496.0
+grow_horizontal = 2
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_o7vhl")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ka6kh")
+icon = ExtResource("9_5fgof")
 expand_icon = true
 
 [node name="Morpion" type="Control" parent="CanvasLayer"]
@@ -493,11 +521,108 @@ scale_amount_max = 10.0
 scale_amount_curve = SubResource("Curve_3pfwe")
 color = Color(1, 0, 0.188235, 1)
 
+[node name="Dice" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1080.0
+offset_bottom = 1920.0
+
+[node name="Background" type="TextureRect" parent="CanvasLayer/Dice"]
+layout_mode = 0
+offset_right = 1080.0
+offset_bottom = 1920.0
+texture = ExtResource("1_cho8v")
+
+[node name="Title" type="Label" parent="CanvasLayer/Dice"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -481.0
+offset_top = 159.0
+offset_right = 478.0
+offset_bottom = 459.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_jk13d")
+theme_override_font_sizes/font_size = 300
+text = "Dice Game"
+
+[node name="DiceValueIMG" type="TextureRect" parent="CanvasLayer/Dice"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -204.5
+offset_top = -203.5
+offset_right = 204.5
+offset_bottom = 203.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_5fgof")
+
+[node name="ReLaunchDiceBtn" type="Button" parent="CanvasLayer/Dice"]
+layout_mode = 0
+offset_left = 334.0
+offset_top = 1330.0
+offset_right = 756.0
+offset_bottom = 1640.0
+theme_override_fonts/font = ExtResource("3_es2oj")
+theme_override_font_sizes/font_size = 150
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_xahwp")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jjr3q")
+text = "Relancer"
+icon = ExtResource("8_rqst5")
+flat = true
+icon_alignment = 1
+vertical_icon_alignment = 2
+expand_icon = true
+
+[node name="Score" type="Label" parent="CanvasLayer/Dice"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -257.0
+offset_top = -464.0
+offset_right = 282.0
+offset_bottom = -264.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_es2oj")
+theme_override_font_sizes/font_size = 200
+text = "Score : 0"
+
+[node name="ReturnDiceBtn" type="Button" parent="CanvasLayer/Dice"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = -144.0
+offset_right = 388.0
+offset_bottom = -18.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_es2oj")
+theme_override_font_sizes/font_size = 75
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ak32e")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0ybvg")
+text = "Return"
+icon = ExtResource("6_36wxc")
+flat = true
+expand_icon = true
+
 [connection signal="pressed" from="CanvasLayer/TitleScreen/SelectGameBtn" to="." method="_on_select_game_btn_pressed"]
 [connection signal="pressed" from="CanvasLayer/TitleScreen/OptionBtn" to="." method="_on_option_btn_pressed"]
 [connection signal="pressed" from="CanvasLayer/OptionScreen/ReturnOption" to="." method="_on_return_option_pressed"]
 [connection signal="pressed" from="CanvasLayer/MenuScreen/Morpion" to="." method="_on_morpion_pressed"]
 [connection signal="pressed" from="CanvasLayer/MenuScreen/Return" to="." method="_on_return_pressed"]
+[connection signal="pressed" from="CanvasLayer/MenuScreen/DiceGame" to="." method="_on_dice_game_pressed"]
 [connection signal="pressed" from="CanvasLayer/Morpion/GridContainer/1/Btn1" to="." method="_on_btn_1_pressed"]
 [connection signal="pressed" from="CanvasLayer/Morpion/GridContainer/2/Btn2" to="." method="_on_btn_2_pressed"]
 [connection signal="pressed" from="CanvasLayer/Morpion/GridContainer/3/Btn3" to="." method="_on_btn_3_pressed"]
@@ -509,3 +634,5 @@ color = Color(1, 0, 0.188235, 1)
 [connection signal="pressed" from="CanvasLayer/Morpion/GridContainer/9/Btn9" to="." method="_on_btn_9_pressed"]
 [connection signal="pressed" from="CanvasLayer/Morpion/RetryBtnMorpion" to="." method="_on_retry_btn_morpion_pressed"]
 [connection signal="pressed" from="CanvasLayer/Morpion/ReturnMorpion" to="." method="_on_return_morpion_pressed"]
+[connection signal="pressed" from="CanvasLayer/Dice/ReLaunchDiceBtn" to="." method="_on_re_launch_dice_btn_pressed"]
+[connection signal="pressed" from="CanvasLayer/Dice/ReturnDiceBtn" to="." method="_on_return_dice_btn_pressed"]

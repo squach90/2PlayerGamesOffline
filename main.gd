@@ -5,6 +5,7 @@ extends Node2D
 @onready var MenuScreen = $CanvasLayer/MenuScreen
 @onready var MorpionScreen = $CanvasLayer/Morpion
 @onready var OptionScreen = $CanvasLayer/OptionScreen
+@onready var DiceScreen = $CanvasLayer/Dice
 
 #BUTTON
 @onready var SelectGameBtn = $CanvasLayer/TitleScreen/SelectGameBtn
@@ -13,6 +14,7 @@ extends Node2D
 @onready var ReturnBtnMorpion = $CanvasLayer/Morpion/ReturnMorpion
 @onready var MorpionLauch = $CanvasLayer/MenuScreen/Morpion
 @onready var ReturnBtnOption = $CanvasLayer/OptionScreen/ReturnOption
+@onready var ReturnDiceBtn = $CanvasLayer/Dice/ReturnDiceBtn
 
 #BUTTON_IN_MORPION
 @onready var BtnMorpion1 = $"CanvasLayer/Morpion/GridContainer/1/Btn1"
@@ -34,6 +36,15 @@ extends Node2D
 @onready var RedParticlesMorpions = $CanvasLayer/Morpion/RED
 @onready var CianParticlesMorpions = $CanvasLayer/Morpion/CIAN
 
+#IMAGE
+@onready var DiceValueIMG = $CanvasLayer/Dice/DiceValueIMG
+
+#TEXT_FOR_DICE
+@onready var DiceScoreText = $CanvasLayer/Dice/Score
+
+#VALUE_FOR_DICE
+var ScoreDice = 0
+
 #ICON_FOR_MORPION
 var crossicon = preload("res://Images/croix.png")
 var circleicon = preload("res://Images/cercle.png")
@@ -41,11 +52,22 @@ var circleicon = preload("res://Images/cercle.png")
 func _ready():
 	newGameMorpion()
 	var listOfBtnMoprion = [BtnMorpion1, BtnMorpion2, BtnMorpion3, BtnMorpion4, BtnMorpion5, BtnMorpion6, BtnMorpion7, BtnMorpion8, BtnMorpion9]
-
+	
+	#DICE
+	newGameDice()
+	
+	
 
 func _process(delta):
+	#MORPION
 	viewIfWin()
 	nullMatch()
+	
+	#DICE
+	DiceScoreText.text = "Score : " + str(ScoreDice)
+	if !diceDisplayed:
+		viewDiceValue()
+		diceDisplayed = true
 
 
 func _on_select_game_btn_pressed():
@@ -427,3 +449,69 @@ func nullMatch():
 	var listOfBtnIconMoprion = [Btn1icon, Btn2icon, Btn3icon, Btn4icon, Btn5icon, Btn6icon, Btn7icon, Btn8icon, Btn9icon]
 	if Btn1icon == true and Btn2icon == true and Btn3icon == true and Btn4icon == true and Btn5icon == true and Btn6icon == true and Btn7icon == true and Btn8icon == true and Btn9icon == true and RedWinText.visible == false and BlueWinText.visible == false:
 		RetryBtnMorpion.visible = true
+
+
+#----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#----------------- END OF MORPION PART ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#----------------- DICE GAME PART ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+var rngDice = RandomNumberGenerator.new()
+var currentDiceValue = -1
+var diceDisplayed = false
+
+func newGameDice():
+	currentDiceValue = rngDice.randi_range(1, 6)
+	diceDisplayed = false
+	
+
+func viewDiceValue():
+	if currentDiceValue == -1:
+		print("Lancez d'abord le dé en appelant newGameDice().")
+	else:
+		if currentDiceValue == 1:
+			DiceValueIMG.texture = preload("res://Images/DiceGame/Dice1.png")
+			ScoreDice += 1
+		elif currentDiceValue == 2:
+			DiceValueIMG.texture = preload("res://Images/DiceGame/Dice2.png")
+			ScoreDice += 2
+		elif currentDiceValue == 3:
+			DiceValueIMG.texture = preload("res://Images/DiceGame/Dice3.png")
+			ScoreDice += 3
+		elif currentDiceValue == 4:
+			DiceValueIMG.texture = preload("res://Images/DiceGame/Dice4.png")
+			ScoreDice += 4
+		elif currentDiceValue == 5:
+			DiceValueIMG.texture = preload("res://Images/DiceGame/Dice5.png")
+			ScoreDice += 5
+		elif currentDiceValue == 6:
+			DiceValueIMG.texture = preload("res://Images/DiceGame/Dice6.png")
+			ScoreDice += 6
+
+
+func _on_re_launch_dice_btn_pressed():
+	newGameDice()
+
+
+func _on_dice_game_pressed():
+	MenuScreen.visible = !MenuScreen.visible
+	DiceScreen.visible = !DiceScreen.visible
+
+
+func _on_return_dice_btn_pressed():
+	DiceScreen.visible = !DiceScreen.visible
+	MenuScreen.visible = !MenuScreen.visible
