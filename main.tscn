@@ -46,7 +46,6 @@ script = ExtResource("1_hfvr8")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="TitleScreen" type="Control" parent="CanvasLayer"]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1080.0
@@ -231,6 +230,7 @@ flat = true
 expand_icon = true
 
 [node name="Morpion" type="Control" parent="CanvasLayer"]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1080.0
